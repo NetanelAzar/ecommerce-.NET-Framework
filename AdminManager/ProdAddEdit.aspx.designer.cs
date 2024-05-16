@@ -11,52 +11,61 @@ namespace Ecommerce.AdminManager
 {
 
 
-	public partial class BackAdmin
+	public partial class ProdAddEdit
 	{
 
 		/// <summary>
-		/// head control.
+		/// HidPid control.
 		/// </summary>
 		/// <remarks>
 		/// Auto-generated field.
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
-		protected global::System.Web.UI.WebControls.ContentPlaceHolder head;
+		protected global::System.Web.UI.WebControls.HiddenField HidPid;
 
 		/// <summary>
-		/// form1 control.
+		/// TxtPname control.
 		/// </summary>
 		/// <remarks>
 		/// Auto-generated field.
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
-		protected global::System.Web.UI.HtmlControls.HtmlForm form1;
+		protected global::System.Web.UI.WebControls.TextBox TxtPname;
 
 		/// <summary>
-		/// MainCnt control.
+		/// TxtPrice control.
 		/// </summary>
 		/// <remarks>
 		/// Auto-generated field.
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
-		protected global::System.Web.UI.WebControls.ContentPlaceHolder MainCnt;
+		protected global::System.Web.UI.WebControls.TextBox TxtPrice;
 
 		/// <summary>
-		/// Footer control.
+		/// TxtPdesc control.
 		/// </summary>
 		/// <remarks>
 		/// Auto-generated field.
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
-		protected global::System.Web.UI.WebControls.ContentPlaceHolder Footer;
+		protected global::System.Web.UI.WebControls.TextBox TxtPdesc;
 
 		/// <summary>
-		/// underFooter control.
+		/// TxtPicname control.
 		/// </summary>
 		/// <remarks>
 		/// Auto-generated field.
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
-		protected global::System.Web.UI.WebControls.ContentPlaceHolder underFooter;
+		protected global::System.Web.UI.WebControls.TextBox TxtPicname;
+
+		/// <summary>
+		/// BtnSave control.
+		/// </summary>
+		/// <remarks>
+		/// Auto-generated field.
+		/// To modify move field declaration from designer file to code-behind file.
+		/// </remarks>
+		protected global::System.Web.UI.WebControls.Button BtnSave;
 	}
 }

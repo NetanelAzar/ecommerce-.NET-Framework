@@ -117,6 +117,8 @@
     <Content Include="AdminManager\morris.html" />
     <Content Include="AdminManager\notifications.html" />
     <Content Include="AdminManager\panels-wells.html" />
+    <Content Include="AdminManager\ProdAddEdit.aspx" />
+    <Content Include="AdminManager\ProductsList.aspx" />
     <Content Include="AdminManager\tables.html" />
     <Content Include="AdminManager\typography.html" />
     <Content Include="css\bootstrap-grid.css" />
@@ -165,6 +167,20 @@
     </Compile>
     <Compile Include="AdminManager\Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AdminManager\ProdAddEdit.aspx.cs">
+      <DependentUpon>ProdAddEdit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminManager\ProdAddEdit.aspx.designer.cs">
+      <DependentUpon>ProdAddEdit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AdminManager\ProductsList.aspx.cs">
+      <DependentUpon>ProductsList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminManager\ProductsList.aspx.designer.cs">
+      <DependentUpon>ProductsList.aspx</DependentUpon>
     </Compile>
     <Compile Include="App_Code\BLL\Category.cs" />
     <Compile Include="App_Code\BLL\Client.cs" />
@@ -263,6 +279,7 @@
     <Content Include="AdminManager\fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="AdminManager\README.md" />
     <Content Include="AdminManager\BackAdmin.Master" />
+    <Content Include="AdminManager\css\plugins\he.json" />
     <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

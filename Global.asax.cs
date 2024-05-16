@@ -7,6 +7,7 @@ using System.Web.Security;
 using System.Web.SessionState;
 using System.Data;///
 using System.Data.SqlClient;///בשביל האובייקטים לעבודה מול בסיס הנתנוים 
+using System.Configuration;
 namespace Ecommerce
 {
 	public class Global : System.Web.HttpApplication
@@ -16,7 +17,8 @@ namespace Ecommerce
 		{
 			List<Product> LstProd=new List<Product>();//יצירת רשימה של מוצרים
 			Product P;
-			string Connstr = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\EcommerceDB.mdf;Integrated Security=True;Connect Timeout=30";
+			//שליפת מחרוזת התתחברות מתוך קובץ הגדרות האפליקציה / שרת
+			string Connstr = ConfigurationManager.ConnectionStrings["ConnString"].ConnectionString;
 			SqlConnection Conn = new SqlConnection(Connstr);
 			Conn.Open();//פתיחת הצינור לבסיס הנתונים
 			string Sql = "SELECT * FROM T_Product";
