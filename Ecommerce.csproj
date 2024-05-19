@@ -69,6 +69,8 @@
   <ItemGroup>
     <Content Include="AdminManager\blank.html" />
     <Content Include="AdminManager\buttons.html" />
+    <Content Include="AdminManager\CatAddEdit.aspx" />
+    <Content Include="AdminManager\CategoryList.aspx" />
     <Content Include="AdminManager\css\font-awesome\font-awesome.min.css" />
     <Content Include="AdminManager\css\ltr\bootstrap.min.css" />
     <Content Include="AdminManager\css\ltr\sb-admin-2.css" />
@@ -160,6 +162,20 @@
     </Compile>
     <Compile Include="AdminManager\BackAdmin.Master.designer.cs">
       <DependentUpon>BackAdmin.Master</DependentUpon>
+    </Compile>
+    <Compile Include="AdminManager\CatAddEdit.aspx.cs">
+      <DependentUpon>CatAddEdit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminManager\CatAddEdit.aspx.designer.cs">
+      <DependentUpon>CatAddEdit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AdminManager\CategoryList.aspx.cs">
+      <DependentUpon>CategoryList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminManager\CategoryList.aspx.designer.cs">
+      <DependentUpon>CategoryList.aspx</DependentUpon>
     </Compile>
     <Compile Include="AdminManager\Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>

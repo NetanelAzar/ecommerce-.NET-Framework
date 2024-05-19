@@ -1,6 +1,7 @@
 ﻿using BLL;
 using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -18,6 +19,11 @@ namespace Ecommerce.AdminManager
 				List<Product> LstProd =(List<Product>) Application["Products"];
 				RptProd.DataSource = LstProd;
 				RptProd.DataBind();
+
+
+
+
+
 			}
 
 		}

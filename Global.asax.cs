@@ -16,15 +16,18 @@ namespace Ecommerce
 		protected void Application_Start(object sender, EventArgs e)
 		{
 			List<Product> LstProd=new List<Product>();//יצירת רשימה של מוצרים
+			List<Category> LstCategory = new List<Category>();
+
+
 			Product P;
 			//שליפת מחרוזת התתחברות מתוך קובץ הגדרות האפליקציה / שרת
 			string Connstr = ConfigurationManager.ConnectionStrings["ConnString"].ConnectionString;
 			SqlConnection Conn = new SqlConnection(Connstr);
-			Conn.Open();//פתיחת הצינור לבסיס הנתונים
 			string Sql = "SELECT * FROM T_Product";
+			Conn.Open();//פתיחת הצינור לבסיס הנתונים
+
 			SqlCommand Cmd = new SqlCommand(Sql, Conn);
-			SqlDataReader Dr = null;
-			Dr=Cmd.ExecuteReader();// קבלת תוצאות השאילתה לתוך אובייקט קורא נתנוים
+			SqlDataReader Dr = Cmd.ExecuteReader();// קבלת תוצאות השאילתה לתוך אובייקט קורא נתנוים;
 			while (Dr.Read())
 			{
 				P = new Product()
@@ -40,14 +43,16 @@ namespace Ecommerce
 				};
 				LstProd.Add(P);
 			}
+			Dr.Close();
 			Application["Products"]=LstProd;
 
 
-			List<Category> LstCategory = new List<Category>();
+
 			Category Cat;
 
-			string SqlCat = "SELECT * FROM T_Category";
-			SqlCommand CmdCat = new SqlCommand(SqlCat, Conn);
+			Sql = "SELECT * FROM T_Category"; // שאילתה
+			Cmd = new SqlCommand(Sql, Conn);
+			Dr = Cmd.ExecuteReader();
 			while (Dr.Read())
 			{
 				Cat = new Category()
