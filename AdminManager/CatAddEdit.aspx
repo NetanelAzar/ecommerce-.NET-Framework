@@ -43,10 +43,16 @@
 
                             <div class="form-group">
                                 <label>שם תמונה</label>
-                                <asp:TextBox ID="TxtCPicname" CssClass="form-control" runat="server" placeholder="נא הזן תמונה" />
+                                <asp:Image ID="ImgPicname" CssClass="form-control" runat="server"  />
 
                             </div>
+                            
 
+                            <div class="form-group">
+                                <label>  מוצר תמונה</label>
+                                <asp:FileUpload ID="UploadPic" runat="server" />
+
+                            </div>
 
 
                             <asp:button ID="BtnSave" class="btn btn-primary" OnClick="BtnSave_Click" runat="server" Text="שמירה" />

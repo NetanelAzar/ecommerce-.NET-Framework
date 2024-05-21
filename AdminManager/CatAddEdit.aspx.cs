@@ -33,7 +33,7 @@ namespace Ecommerce.AdminManager
 							TxtCname.Text = LstCategory[i].Cname;
 							TxtParentCid.Text = LstCategory[i].ParentCid + "";
 							TxtCdesc.Text = LstCategory[i].Cdesc;
-							TxtCPicname.Text = LstCategory[i].Picname;
+							ImgPicname.ImageUrl = "/uploads/prods/" + LstCategory[i].Picname;
 							HidCid.Value = Cid;
 						}
 					}
@@ -44,11 +44,39 @@ namespace Ecommerce.AdminManager
         protected void BtnSave_Click(object sender, EventArgs e)
         {
 
+
+			string Picname = "";
+			//נבדטק האם נבחקר קובץ תמונה
+			if (UploadPic.HasFile)
+			{
+				//נשמור תחת שם שאנחנו בוחרים באקראי
+				Picname = GlobFunk.GetRandStr(8);
+
+				string OriginalFileName = UploadPic.FileName;
+				string Ext = OriginalFileName.Substring(OriginalFileName.LastIndexOf('.'));//מהנקודה האחרונה עד הסוף
+				Picname += Ext;//השם המלר של הקובץ אחרי ההשינוי
+				string FullPath = Server.MapPath("/uploads/prods/");
+				UploadPic.SaveAs(FullPath + Picname);
+
+			}
+			else
+			{
+				Picname = ImgPicname.ImageUrl.Substring(ImgPicname.ImageUrl.LastIndexOf('/') + 1);
+			}
+
+
+
+
+
+
+
+
+
 			string Sql = "";
 			if (HidCid.Value == "-1")//הוספת מוצר חדש
 			{
 				Sql = "INSERT INTO T_Category (Cname, ParentCid, Cdesc, Picname) VALUES";
-				Sql += $" N'{TxtCname.Text}',{TxtParentCid.Text} ,N'{TxtCdesc.Text}',N'{TxtCPicname.Text}'";
+				Sql += $" N'{TxtCname.Text}',{TxtParentCid.Text} ,N'{TxtCdesc.Text}',N'{Picname}'";
 			}
 			else///עדכון מוצר
 			{
@@ -56,7 +84,7 @@ namespace Ecommerce.AdminManager
 				Sql += $" Cname=N'{TxtCname.Text}',";
 				Sql += $" ParentCid=N'{TxtParentCid.Text}',";
 				Sql += $" Cdesc=N'{TxtCdesc.Text}',";
-				Sql += $" Picname=N'{TxtCPicname.Text}' ";
+				Sql += $" Picname=N'{Picname}' ";
 				Sql += $" WHERE  Cid={HidCid.Value}";
 			}
 

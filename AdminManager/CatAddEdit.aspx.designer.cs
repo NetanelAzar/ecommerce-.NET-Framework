@@ -51,13 +51,22 @@ namespace Ecommerce.AdminManager
 		protected global::System.Web.UI.WebControls.TextBox TxtCdesc;
 
 		/// <summary>
-		/// TxtCPicname control.
+		/// ImgPicname control.
 		/// </summary>
 		/// <remarks>
 		/// Auto-generated field.
 		/// To modify move field declaration from designer file to code-behind file.
 		/// </remarks>
-		protected global::System.Web.UI.WebControls.TextBox TxtCPicname;
+		protected global::System.Web.UI.WebControls.Image ImgPicname;
+
+		/// <summary>
+		/// UploadPic control.
+		/// </summary>
+		/// <remarks>
+		/// Auto-generated field.
+		/// To modify move field declaration from designer file to code-behind file.
+		/// </remarks>
+		protected global::System.Web.UI.WebControls.FileUpload UploadPic;
 
 		/// <summary>
 		/// BtnSave control.
