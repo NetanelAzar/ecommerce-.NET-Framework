@@ -34,7 +34,7 @@ namespace Ecommerce.AdminManager
 							TxtPname.Text = LstProd[i].Pname;
 							TxtPrice.Text=LstProd[i].Price+"";
 							TxtPdesc.Text = LstProd[i].Pdesc;
-							TxtPicname.Text = LstProd[i].Picname;
+							ImgPicname.ImageUrl = "/uploads/prods/" + LstProd[i].Picname;
 							HidPid.Value=Pid;
 						}
 					}
@@ -44,11 +44,37 @@ namespace Ecommerce.AdminManager
 
 		protected void BtnSave_Click(object sender, EventArgs e)
 		{
+			string Picname = "";
+			//נבדטק האם נבחקר קובץ תמונה
+			if(UploadPic.HasFile)
+			{
+				//נשמור תחת שם שאנחנו בוחרים באקראי
+				Picname = GlobFunk.GetRandStr(8);
+
+				string OriginalFileName = UploadPic.FileName;
+				string Ext = OriginalFileName.Substring(OriginalFileName.LastIndexOf('.'));//מהנקודה האחרונה עד הסוף
+				Picname+= Ext;//השם המלר של הקובץ אחרי ההשינוי
+				string FullPath=Server.MapPath("/uploads/prods/");
+				UploadPic.SaveAs(FullPath + Picname);
+
+			}
+			else 
+			{
+				Picname = ImgPicname.ImageUrl.Substring(ImgPicname.ImageUrl.LastIndexOf('/')+1);
+			}
+
+
+
+
+
+
+
+
 			string Sql = "";
 			if (HidPid.Value == "-1")//הוספת מוצר חדש
 			{
 				Sql = "insert into T_Product (Pname, Price, Pdesc, Picname) values";
-				Sql += $" N'{TxtPname.Text}',{TxtPrice.Text} ,N'{TxtPdesc.Text}',N'{TxtPicname.Text}'";
+				Sql += $" N'{TxtPname.Text}',{TxtPrice.Text} ,N'{TxtPdesc.Text}',N'{Picname}'";
 			}
 			else///עדכון מוצר
 			{
@@ -56,7 +82,7 @@ namespace Ecommerce.AdminManager
 				Sql += $" Pname=N'{TxtPname.Text}',";
 				Sql += $" Price=N'{TxtPrice.Text}',";
 				Sql += $" Pdesc=N'{TxtPdesc.Text}',";
-				Sql += $" Picname=N'{TxtPicname.Text}' ";
+				Sql += $" Picname=N'{Picname}' ";
 				Sql += $" where Pid={HidPid.Value}";
 			}
 

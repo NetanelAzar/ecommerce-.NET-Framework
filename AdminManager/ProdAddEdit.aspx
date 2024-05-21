@@ -42,7 +42,13 @@
 
                             <div class="form-group">
                                 <label>שם תמונה</label>
-                                <asp:TextBox ID="TxtPicname" CssClass="form-control" runat="server" placeholder="נא הזן תמונה" />
+                                <asp:Image ID="ImgPicname" CssClass="form-control" runat="server" />
+
+                            </div>
+
+                            <div class="form-group">
+                                <label>  מוצר תמונה</label>
+                                <asp:FileUpload ID="UploadPic" runat="server" />
 
                             </div>
 

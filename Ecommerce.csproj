@@ -202,6 +202,7 @@
     <Compile Include="App_Code\BLL\Client.cs" />
     <Content Include="App_Code\BLL\City.cs" />
     <Compile Include="App_Code\BLL\Product.cs" />
+    <Compile Include="App_Code\BLL\GlobFunk.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

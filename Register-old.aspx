@@ -1,15 +1,8 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Register-old.aspx.cs" Inherits="Ecommerce.Register_old" %>
-
-<!DOCTYPE html>
-
-<html xmlns="http://www.w3.org/1999/xhtml" dir="rtl">
-<head runat="server">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" />
-    <title>הרשמה</title>
-</head>
-<body>
-    <form id="form1" runat="server">
-         <div class="container"> <!-- תיבת הכלים -->
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MainMaster.Master" AutoEventWireup="true" CodeBehind="Register.aspx.cs" Inherits="Ecommerce.Register" %>
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="MainCnt" runat="server">
+          <div class="container"> <!-- תיבת הכלים -->
      
           <div class="row"> <!-- שורה -->
 
@@ -29,12 +22,12 @@
                   <asp:Literal ID="MailMsg" runat="server" /><br />
 
                   <label for="TxtPhone">פלאפון</label>
-                  <asp:TextBox ID="TxtPhone" runat="server" TextMode="Phone" CssClass="form-control"  /><br />
+                  <asp:TextBox ID="TxtPhone" runat="server" TextMode="Phone" CssClass="form-control" /><br />
 
      
 
                   <label for="TxtAdd">כתובת :</label>
-                  <asp:TextBox ID="TxtAdd" runat="server" CssClass="form-control" /><br />
+                  <asp:TextBox ID="TxtAdd" runat="server" CssClass="form-control"  /><br />
 
                       <label for="DDLCity">עיר</label>
                       <asp:DropDownList ID="DDLCity" runat="server" CssClass="form-control" />
@@ -67,7 +60,7 @@
               </div>
           </div>
       </div>
-    </form>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-</body>
-</html>
+
+</asp:Content>
+<asp:Content ID="Content3" ContentPlaceHolderID="FooterCnt" runat="server">
+</asp:Content>

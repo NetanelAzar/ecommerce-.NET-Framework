@@ -32,26 +32,24 @@
             </div>
         </div>
 
-     
-            <div class="container">
-                <div class="row">
-                    <asp:Repeater ID="RptProducts" runat="server">
-                        <ItemTemplate>
-                            <div class="col-md-4">
-                                <div class="card" style="width: 18rem;">
-                                    <img src="/uploads/prods/<%#Eval("Picname") %>" class="card-img-top" alt="...">
-                                    <div class="card-body">
-                                        <h5 class="card-title"><%#Eval("Pname") %></h5>
-                                        <p class="card-text"><%#Eval("Pdesc") %></p>
-                                        <a href="#" class="btn btn-primary">Go somewhere</a>
-                                    </div>
-                                </div>
+    <div class="container"> <!-- מכיל את כל התוכן המרכזי -->
+        <div class="row"> <!-- שורה של מוצרים -->
+            <asp:Repeater ID="RptProducts" runat="server">
+                <ItemTemplate>
+                    <div class="col-md-4 product-card"> <!-- עמודה בגודל בינוני -->
+                        <div class="card h-100"> <!-- כרטיס Bootstrap עם גובה מלא -->
+                            <img src="/uploads/prods/<%#Eval("Picname") %>" class="card-img-top" alt="<%#Eval("Pname") %>">
+                            <div class="card-body">
+                                <h5 class="card-title"><%#Eval("Pname") %></h5>
+                                <p class="card-text"><%#Eval("Pdesc") %></p>
+                                <a href="#" class="btn btn-primary">קנה עכשיו</a>
                             </div>
-                        </ItemTemplate>
-                    </asp:Repeater>
-                </div>
-            </div>
-    
+                        </div>
+                    </div>
+                </ItemTemplate>
+            </asp:Repeater>
+        </div>
+    </div>
 
 
 

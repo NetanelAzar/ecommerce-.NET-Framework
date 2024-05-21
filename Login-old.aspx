@@ -1,29 +1,40 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Login-old.aspx.cs" Inherits="Ecommerce.Login" %>
-
-<!DOCTYPE html>
-
-<html xmlns="http://www.w3.org/1999/xhtml" dir="rtl">
-<head runat="server">
-     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" />
-    <title></title>
-</head>
-<body>
-    <form id="form1" runat="server">
-<div class="container"> <!-- תיבת הכלים -->
-       
-    <div class="row"> <!-- שורה -->
-
-        <div class="col-sm-2"> <!-- עמודה בחצי הרוחב של מסך בגודל קטן -->
-
-           שם משתמש : <asp:TextBox ID="TxtEmail" runat="server" /><br />
-            סיסמא : <asp:TextBox ID="TxtPassword" runat="server" TextMode="Password" /><br />
-            <asp:Button ID="BtnLogin" runat="server" OnClick="BtnLogin_Click" Text="הרשמה"  /><br />
-            <asp:Literal ID="LtlMsg" runat="server" />
-        </div>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MainMaster.Master" AutoEventWireup="true" CodeBehind="Login.aspx.cs" Inherits="Ecommerce.Login1" %>
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <style>
+        .login-container {
+            max-width: 400px; /* הגבלת רוחב מקסימלי של הקונטיינר */
+            margin: 50px auto; /* מרכז את הקונטיינר עם מרווח עליון ותחתון */
+            padding: 15px; /* ריפוד פנימי */
+            border-radius: 10px; /* פינות מעוגלות */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* צל קל */
+            background-color: #ffffff; /* צבע רקע לבן */
+        }
+        .form-title {
+            text-align: center; /* ממרכז את הטקסט */
+            margin-bottom: 15px; /* מרווח תחתון */
+        }
+    </style>
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="MainCnt" runat="server">
+    <div class="container"> <!-- מרכיב המכיל את כל התוכן המרכזי ומעניק לו רווחים פנימיים -->
+        <div class="login-container">
+            <h2 class="form-title">התחברות</h2>
+            <div class="mb-3"> <!-- מרכיב המוסיף מרווח תחתון של 3 (1.5rem) -->
+                <label for="TxtEmail" class="form-label">שם משתמש:</label> <!-- מספק סגנון תקני לתוויות טופס -->
+                <asp:TextBox ID="TxtEmail" runat="server" CssClass="form-control" /> <!-- הופך את תיבת הטקסט למרכיב טופס תקני של Bootstrap -->
+            </div>
+            <div class="mb-3"> <!-- מרכיב המוסיף מרווח תחתון של 3 (1.5rem) -->
+                <label for="TxtPassword" class="form-label">סיסמא:</label> <!-- מספק סגנון תקני לתוויות טופס -->
+                <asp:TextBox ID="TxtPassword" runat="server" TextMode="Password" CssClass="form-control" /> <!-- הופך את תיבת הטקסט למרכיב טופס תקני של Bootstrap -->
+            </div>
+            <div class="d-grid gap-2"> <!-- מסדר את הכפתורים עם גריד ורווח של 2 (0.5rem) -->
+                <asp:Button ID="BtnLogin" runat="server" OnClick="BtnLogin_Click" Text="הרשמה" CssClass="btn btn-primary" /> <!-- כפתור בסגנון ראשי של Bootstrap -->
+            </div>
+            <div class="mt-3"> <!-- מרכיב המוסיף מרווח עליון של 3 (1rem) -->
+                <asp:Literal ID="LtlMsg" runat="server" />
+            </div>
         </div>
     </div>
-    </form>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-
-</body>
-</html>
+</asp:Content>
+<asp:Content ID="Content3" ContentPlaceHolderID="FooterCnt" runat="server">
+</asp:Content>
