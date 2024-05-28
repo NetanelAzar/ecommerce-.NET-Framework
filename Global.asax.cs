@@ -8,6 +8,7 @@ using System.Web.SessionState;
 using System.Data;///
 using System.Data.SqlClient;///בשביל האובייקטים לעבודה מול בסיס הנתנוים 
 using System.Configuration;
+using DATA;
 namespace Ecommerce
 {
 	public class Global : System.Web.HttpApplication
@@ -15,9 +16,56 @@ namespace Ecommerce
 
 		protected void Application_Start(object sender, EventArgs e)
 		{
-			List<Product> LstProd=new List<Product>();//יצירת רשימה של מוצרים
-			List<Category> LstCategory = new List<Category>();
 
+
+		
+
+
+
+			Application["Products"] = Product.GetAll();
+
+
+			List<Client> LstClient = new List<Client>();//הגדרת רשימה עבור לקוחות
+	     	string Sql = "SELECT * FROM T_Client"; // שאילתה
+			string ConnStr = ConfigurationManager.ConnectionStrings["ConnString"].ConnectionString;
+			SqlConnection Conn = new SqlConnection(ConnStr);
+			Conn.Open();//פתיחת הצינור לבסיס הנתונים
+			SqlCommand Cmd = new SqlCommand(Sql, Conn);
+			SqlDataReader Dr = Cmd.ExecuteReader();
+
+
+			Client Tmp;
+			Tmp = new Client()
+			{
+				ClientMail = "netanelazar880@gmail.com",
+				ClientPassword = "12345",
+				ClientID = 3,
+				ClientName = "netanel",
+				ClientLastname = "azar",
+			};
+
+			LstClient.Add(Tmp);
+			Dr.Close();
+			Application["Clients"] = LstClient;//
+
+
+
+
+
+
+
+
+
+			/*			List<Category> LstCategory = new List<Category>();
+			List<Client> LstClient = new List<Client>();//הגדרת רשימה עבור לקוחות*/
+
+
+
+
+
+
+
+			/*
 
 			Product P;
 			//שליפת מחרוזת התתחברות מתוך קובץ הגדרות האפליקציה / שרת
@@ -71,6 +119,31 @@ namespace Ecommerce
 
 
 
+	
+
+
+
+			Sql = "SELECT * FROM T_Client"; // שאילתה
+			Cmd = new SqlCommand(Sql, Conn);
+			Dr = Cmd.ExecuteReader();
+
+
+			Client Tmp;
+			Tmp = new Client()
+			{
+				ClientMail = "daniel21@gmail.com",
+				ClientPassword = "2323",
+				ClientID = 3,
+				ClientName = "daniel",
+				ClientLastname = "gamliel",
+				ClientAddress = "gedera"
+			};
+		
+			LstClient.Add(Tmp);
+			Application["Clients"] = LstClient;//
+
+
+
 
 
 			List<City> LstCity = new List<City>();///הגדרת רשימה עבור לקוחות
@@ -106,7 +179,8 @@ namespace Ecommerce
 
 
 
-			Conn.Close();//סגירת הצינור לבסיס הנתונים		
+			Conn.Close();//סגירת הצינור לבסיס הנתונים	
+					*/
 		}
 		protected void Session_Start(object sender, EventArgs e)
 		{

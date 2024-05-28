@@ -23,11 +23,13 @@ namespace Ecommerce
 			string Password = TxtPassword.Text;
 			for (int i = 0; i < LstClient.Count; i++)
 			{
-				if (LstClient[i].Email == Email && LstClient[i].Password == Password)//מציאת שם משתמש וסיסמא
+				Console.WriteLine(LstClient[i].ClientMail);
+				Console.WriteLine(LstClient[i].ClientPassword);
+				if (LstClient[i].ClientMail == Email && LstClient[i].ClientPassword == Password)//מציאת שם משתמש וסיסמא
 				{
 					///ניצור משתנה מסוג סשן
 					Session["Login"] = LstClient[i];
-					Response.Redirect("ProductsList.aspx");
+					Response.Redirect("ProductList.aspx");
 				}
 			}
 			LtlMsg.Text = "שם וסיסמא אינם תקינים";

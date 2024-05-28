@@ -26,17 +26,18 @@ namespace Ecommerce.AdminManager
 				else
 				{ 
 					int pid=int.Parse(Pid);//המרה של המשתנה למספר שלם , לצורך חיפוש במאגר
-					List<Product> LstProd = (List<Product>)Application["Products"];
-					for (int i = 0; i < LstProd.Count; i++) 
+					Product Tmp= Product.GetById(pid);
+					if (Tmp != null)
 					{
-						if (LstProd[i].Pid == pid) 
-						{
-							TxtPname.Text = LstProd[i].Pname;
-							TxtPrice.Text=LstProd[i].Price+"";
-							TxtPdesc.Text = LstProd[i].Pdesc;
-							ImgPicname.ImageUrl = "/uploads/prods/" + LstProd[i].Picname;
-							HidPid.Value=Pid;
-						}
+						TxtPname.Text = Tmp.Pname;
+						TxtPrice.Text = Tmp.Price + "";
+						TxtPdesc.Text = Tmp.Pdesc;
+						ImgPicname.ImageUrl = "/uploads/prods/" + Tmp.Picname;
+						HidPid.Value = Pid;
+					}
+					else
+					{
+						Pid = "-1";
 					}
 				}
 			}

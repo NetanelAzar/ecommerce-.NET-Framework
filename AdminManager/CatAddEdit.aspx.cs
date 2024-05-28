@@ -24,19 +24,20 @@ namespace Ecommerce.AdminManager
 				else
 				{
 					int cid = int.Parse(Cid);//המרה של המשתנה למספר שלם , לצורך חיפוש במאגר
-					List<Category> LstCategory = (List<Category>)Application["Categories"];
-
-					for (int i = 0; i < LstCategory.Count; i++)
-					{
-						if (LstCategory[i].Cid == cid)
+					Category Tmp=Category.GetById(cid);
+						if (Tmp!=null)
 						{
-							TxtCname.Text = LstCategory[i].Cname;
-							TxtParentCid.Text = LstCategory[i].ParentCid + "";
-							TxtCdesc.Text = LstCategory[i].Cdesc;
-							ImgPicname.ImageUrl = "/uploads/prods/" + LstCategory[i].Picname;
+							TxtCname.Text = Tmp.Cname;
+							TxtParentCid.Text = Tmp.ParentCid + "";
+							TxtCdesc.Text = Tmp.Cdesc;
+							ImgPicname.ImageUrl = "/uploads/prods/" + Tmp.Picname;
 							HidCid.Value = Cid;
 						}
-					}
+						else
+						{
+							Cid = "-1";
+						}
+					
 				}
 			}
 		}

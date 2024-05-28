@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using DAL;
 
 namespace BLL
 {
@@ -15,5 +16,20 @@ namespace BLL
 		public int Cid { get; set; }
 		public int Status { get; set; }
 		public DateTime AddDate { get; set; }
+
+
+
+
+	  public static List<Product> GetAll()
+	  {
+		return ProductDAL.GetAll();
+	  }
+
+
+		public static Product GetById(int Id)
+		{
+			return ProductDAL.GetById(Id);
+		}
 	}
+
 }
