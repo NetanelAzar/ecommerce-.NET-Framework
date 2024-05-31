@@ -289,7 +289,7 @@
                             <a href="Default.aspx"><i class="fa fa-dashboard fa-fw"></i> ראשי</a>
                         </li>
                         <li>
-                            <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> מוצרים<span class="fa arrow"></span></a>
+                            <a href="#"><i class="fa fa-tag"></i> מוצרים<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
                                     <a href="ProductsList.aspx">רשימת מוצרים</a>
@@ -306,6 +306,22 @@
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>
+
+                                                <li>
+                            <a href="#"><i class="fa fa-users"></i> משתמשים<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="ProductsList.aspx">רשימת משתמשים</a>
+                                </li>
+                                <li>
+                                    <a href="ProdAddEdit.aspx">הוספת משתמש חדש</a>
+                                </li>
+
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>
+
+
                         <li>
                             <a href="tables.html"><i class="fa fa-table fa-fw"></i> Tables</a>
                         </li>
