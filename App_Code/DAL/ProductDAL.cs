@@ -3,6 +3,7 @@ using DATA;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 
@@ -75,36 +76,50 @@ namespace DAL
 		}
 
 
-
-
 		public static void Save(Product product)
 		{
-			DbContext Db = new DbContext();//יצירת אובייקט מסוג גישה לבסיס הנתונים 
+			DbContext Db = new DbContext(); // יצירת אובייקט מסוג גישה לבסיס הנתונים 
 			string Sql;
 
-			if (product.Pid == 0)
+			if (product.Pid == -1)
 			{
-				//INSERT מוצר חדש 
-				Sql = $"INSERT INTO T_Product (Pname, Price, Pdesc, Picname, Cid, AddDate, Status) " +
-					  $"VALUES ('{product.Pname}', {product.Price}, '{product.Pdesc}', '{product.Picname}', {product.Cid}, '{product.AddDate}', {product.Status})";
+				// INSERT מוצר חדש 
+				Sql = "INSERT INTO T_Product (Pname, Price, Pdesc, Picname, Cid, Status) " +
+					  "VALUES (@Pname, @Price, @Pdesc, @Picname, @Cid, @Status)";
 			}
 			else
 			{
-				///עדכון מוצר
-				Sql = $"UPDATE T_Product SET " +
-					  $"Pname = '{product.Pname}', " +
-					  $"Price = {product.Price}, " +
-					  $"Pdesc = '{product.Pdesc}', " +
-					  $"Picname = '{product.Picname}', " +
-					  $"Cid = {product.Cid}, " +
-					  $"AddDate = '{product.AddDate}', " +
-					  $"Status = {product.Status} " +
-					  $"WHERE Pid = {product.Pid}";
+				// עדכון מוצר
+				Sql = "UPDATE T_Product SET " +
+					  "Pname = @Pname, " +
+					  "Price = @Price, " +
+					  "Pdesc = @Pdesc, " +
+					  "Picname = @Picname, " +
+					  "Cid = @Cid, " +
+					  "Status = @Status " +
+					  "WHERE Pid = @Pid";
 			}
 
-			Db.Execute(Sql); // ביצוע השאילתה על בסיס הנתונים
-			Db.Close();// סגירת הגישה לבסיס הנתונים
+			using (SqlCommand cmd = new SqlCommand(Sql, Db.Conn))
+			{
+				cmd.Parameters.AddWithValue("@Pname", product.Pname);
+				cmd.Parameters.AddWithValue("@Price", product.Price);
+				cmd.Parameters.AddWithValue("@Pdesc", product.Pdesc);
+				cmd.Parameters.AddWithValue("@Picname", product.Picname);
+				cmd.Parameters.AddWithValue("@Cid", product.Cid);
+				cmd.Parameters.AddWithValue("@Status", product.Status);
+
+				if (product.Pid != 0)
+				{
+					cmd.Parameters.AddWithValue("@Pid", product.Pid);
+				}
+
+				cmd.ExecuteNonQuery(); // ביצוע השאילתה על בסיס הנתונים
+			}
+
+			Db.Close(); // סגירת הגישה לבסיס הנתונים
 		}
+
 
 	}
 }

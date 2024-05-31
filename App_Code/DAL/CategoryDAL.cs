@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using BLL;
@@ -66,24 +67,42 @@ namespace DAL
 			DbContext Db = new DbContext();
 			string Sql;
 
-			if (category.Cid == 0)
+			if (category.Cid == -1)
 			{
-				Sql = $"INSERT INTO T_Category (Cname, Cdesc, Picname, ParentCid, AddDate, Status) " +
-					  $"VALUES ('{category.Cname}', '{category.Cdesc}', '{category.Picname}', {category.ParentCid}, '{category.AddDate}', {category.Status})";
+				Sql = "INSERT INTO T_Category (Cname, Cdesc, Picname, ParentCid, Status) " +
+					  "VALUES (@Cname, @Cdesc, @Picname, @ParentCid,  @Status);" +
+					  "SELECT SCOPE_IDENTITY();";
 			}
 			else
 			{
-				Sql = $"UPDATE T_Category SET " +
-					  $"Cname = '{category.Cname}', " +
-					  $"Cdesc = '{category.Cdesc}', " +
-					  $"Picname = '{category.Picname}', " +
-					  $"ParentCid = {category.ParentCid}, " +
-					  $"AddDate = '{category.AddDate}', " +
-					  $"Status = {category.Status} " +
-					  $"WHERE Cid = {category.Cid}";
+				Sql = "UPDATE T_Category SET " +
+					  "Cname = @Cname, " +
+					  "Cdesc = @Cdesc, " +
+					  "Picname = @Picname, " +
+					  "ParentCid = @ParentCid, " +
+					  "Status = @Status " +
+					  "WHERE Cid = @Cid";
 			}
 
-			Db.Execute(Sql);
+			using (SqlCommand cmd = new SqlCommand(Sql, Db.Conn))
+			{
+				cmd.Parameters.AddWithValue("@Cname", category.Cname);
+				cmd.Parameters.AddWithValue("@Cdesc", category.Cdesc);
+				cmd.Parameters.AddWithValue("@Picname", category.Picname);
+				cmd.Parameters.AddWithValue("@ParentCid", category.ParentCid);
+				cmd.Parameters.AddWithValue("@Status", category.Status);
+
+				if (category.Cid != 0)
+				{
+					cmd.Parameters.AddWithValue("@Cid", category.Cid);
+					cmd.ExecuteNonQuery();
+				}
+				else
+				{
+					category.Cid = Convert.ToInt32(cmd.ExecuteScalar());
+				}
+			}
+
 			Db.Close();
 		}
 	}

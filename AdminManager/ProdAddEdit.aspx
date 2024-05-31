@@ -13,25 +13,27 @@
         <script src="https://cdn.tiny.cloud/1/my30q5lf01td1btvxs662qsopn3pcmcm7m8o7nocvalbaf9n/tinymce/7/tinymce.min.js" referrerpolicy="origin"></script>
 
 <!-- Place the following <script> and <textarea> tags your HTML's <body> -->
+
 <script>
     tinymce.init({
         selector: 'textarea',
         width: 1000,
         height: 300,
         plugins: [
-            'advlist', 'autolink', 'link', 'image', 'lists', 'charmap', 'preview', 'anchor', 'pagebreak',
-            'searchreplace', 'wordcount', 'visualblocks', 'code', 'fullscreen', 'insertdatetime', 'media',
-            'table', 'emoticons', 'template', 'codesample'
+            'advlist autolink link image lists charmap preview anchor pagebreak',
+            'searchreplace wordcount visualblocks code fullscreen insertdatetime media',
+            'table emoticons template codesample'
         ],
-        toolbar: 'undo redo | styles | bold italic underline | alignleft aligncenter alignright alignjustify |' +
+        toolbar: 'undo redo | styles | bold italic underline | alignleft aligncenter alignright alignjustify | ' +
             'bullist numlist outdent indent | link image | print preview media fullscreen | ' +
             'forecolor backcolor emoticons',
         menu: {
-            favs: { title: 'menu', items: 'code visualaid | searchreplace | emoticons' }
+            favs: { title: 'Menu', items: 'code visualaid | searchreplace | emoticons' }
         },
         menubar: 'favs file edit view insert format tools table',
-        content_style: 'body{font-family:Helvetica,Arial,sans-serif; font-size:16px}',
-         directionality: 'rtl'
+        content_style: 'body {font-family: Helvetica, Arial, sans-serif; font-size: 16px}',
+        directionality: 'rtl',
+        language: 'he_IL' 
     });
 </script>
 

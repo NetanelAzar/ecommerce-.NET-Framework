@@ -70,61 +70,21 @@ namespace Ecommerce.AdminManager
 
 
 
+            Product product = new Product
+            {
+               Pid = int.Parse(HidPid.Value),
+               Pname = TxtPname.Text,
+               Price = float.Parse(TxtPrice.Text),
+               Pdesc = TxtPdesc.Text,
+               Picname = Picname
+            };
 
-			string Sql = "";
-			if (HidPid.Value == "-1")//הוספת מוצר חדש
-			{
-				Sql = "insert into T_Product (Pname, Price, Pdesc, Picname) values";
-				Sql += $" N'{TxtPname.Text}',{TxtPrice.Text} ,N'{TxtPdesc.Text}',N'{Picname}'";
-			}
-			else///עדכון מוצר
-			{
-				Sql = " Update T_Product set ";
-				Sql += $" Pname=N'{TxtPname.Text}',";
-				Sql += $" Price=N'{TxtPrice.Text}',";
-				Sql += $" Pdesc=N'{TxtPdesc.Text}',";
-				Sql += $" Picname=N'{Picname}' ";
-				Sql += $" where Pid={HidPid.Value}";
-			}
+                product.Save();
 
+            List<Product> LstProd = Product.GetAll();
+            Application["Products"] = LstProd;
 
-			//שליפת מחרוזת התתחברות מתוך קובץ הגדרות האפליקציה / שרת
-			string Connstr = ConfigurationManager.ConnectionStrings["ConnString"].ConnectionString;
-			SqlConnection Conn = new SqlConnection(Connstr);
-			Conn.Open();//פתיחת הצינור לבסיס הנתונים
-
-			SqlCommand Cmd = new SqlCommand(Sql, Conn);
-			Cmd.ExecuteNonQuery();//הפעלת השאילתה שלא מחזירה נתונים
-
-			///טעינה מחודשת של רשימת המוצרים אל האפליקישיין
-			List<Product> LstProd = new List<Product>();
-			Sql = "select * from T_Product";
-			Cmd.CommandText=Sql;
-
-
-			SqlDataReader Dr = Cmd.ExecuteReader();// קבלת תוצאות השאילתה לתוך אובייקט קורא נתנוים
-
-			while (Dr.Read())
-			{
-				Product P = new Product()
-				{
-
-					Pid = int.Parse(Dr["Pid"] + ""),
-					Pname = Dr["Pname"] + "",
-					Price = float.Parse(Dr["Price"] + ""),
-					Pdesc = Dr["Pdesc"] + "",
-					Picname = Dr["Picname"] + "",
-
-
-
-				};
-
-				LstProd.Add(P);
-			}
-			
-			Conn.Close();
-			Application["Products"] = LstProd;
-			Response.Redirect("ProductsList.aspx");
+            Response.Redirect("ProductsList.aspx");
 		}
 	}
 }
