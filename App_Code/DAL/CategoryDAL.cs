@@ -64,9 +64,13 @@ namespace DAL
 
 		public static void Save(Category category)
 		{
+			// יצירת חיבור למסד הנתונים
 			DbContext Db = new DbContext();
-			string Sql;
 
+
+			
+			string Sql;
+		// הגדרת השאילתא לביצוע השמירה או העדכון
 			if (category.Cid == -1)
 			{
 				Sql = "INSERT INTO T_Category (Cname, Cdesc, Picname, ParentCid, Status) " +
@@ -83,22 +87,26 @@ namespace DAL
 					  "Status = @Status " +
 					  "WHERE Cid = @Cid";
 			}
-
+			// ביצוע השאילתה על ידי קריאה למתודת ExecuteNonQuery 
 			using (SqlCommand cmd = new SqlCommand(Sql, Db.Conn))
 			{
+				// הגדרת פרמטרים והוספתם לפקודה
 				cmd.Parameters.AddWithValue("@Cname", category.Cname);
 				cmd.Parameters.AddWithValue("@Cdesc", category.Cdesc);
 				cmd.Parameters.AddWithValue("@Picname", category.Picname);
 				cmd.Parameters.AddWithValue("@ParentCid", category.ParentCid);
 				cmd.Parameters.AddWithValue("@Status", category.Status);
 
-				if (category.Cid != 0)
+				if (category.Cid > 0)
 				{
+					// אם ה-Cid של הקטגוריה קיים כבר,
+					// נפעיל את השאילתה עדכון על מנת לעדכן את הרשומה					
 					cmd.Parameters.AddWithValue("@Cid", category.Cid);
 					cmd.ExecuteNonQuery();
 				}
 				else
 				{
+				
 					category.Cid = Convert.ToInt32(cmd.ExecuteScalar());
 				}
 			}
