@@ -74,5 +74,37 @@ namespace DAL
 
 		}
 
+
+
+
+		public static void Save(Product product)
+		{
+			DbContext Db = new DbContext();//יצירת אובייקט מסוג גישה לבסיס הנתונים 
+			string Sql;
+
+			if (product.Pid == 0)
+			{
+				//INSERT מוצר חדש 
+				Sql = $"INSERT INTO T_Product (Pname, Price, Pdesc, Picname, Cid, AddDate, Status) " +
+					  $"VALUES ('{product.Pname}', {product.Price}, '{product.Pdesc}', '{product.Picname}', {product.Cid}, '{product.AddDate}', {product.Status})";
+			}
+			else
+			{
+				///עדכון מוצר
+				Sql = $"UPDATE T_Product SET " +
+					  $"Pname = '{product.Pname}', " +
+					  $"Price = {product.Price}, " +
+					  $"Pdesc = '{product.Pdesc}', " +
+					  $"Picname = '{product.Picname}', " +
+					  $"Cid = {product.Cid}, " +
+					  $"AddDate = '{product.AddDate}', " +
+					  $"Status = {product.Status} " +
+					  $"WHERE Pid = {product.Pid}";
+			}
+
+			Db.Execute(Sql); // ביצוע השאילתה על בסיס הנתונים
+			Db.Close();// סגירת הגישה לבסיס הנתונים
+		}
+
 	}
 }

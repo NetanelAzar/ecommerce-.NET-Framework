@@ -197,10 +197,11 @@
     </Compile>
     <Compile Include="App_Code\BLL\Category.cs" />
     <Compile Include="App_Code\BLL\Client.cs" />
-    <Content Include="App_Code\BLL\City.cs" />
+    <Compile Include="App_Code\BLL\City.cs" />
     <Compile Include="App_Code\BLL\Product.cs" />
     <Compile Include="App_Code\BLL\GlobFunk.cs" />
     <Compile Include="App_Code\DAL\CategoryDAL.cs" />
+    <Compile Include="App_Code\DAL\ClientDAL.cs" />
     <Compile Include="App_Code\DAL\ProductDAL.cs" />
     <Compile Include="App_Code\DbContext.cs" />
     <Compile Include="Global.asax.cs">

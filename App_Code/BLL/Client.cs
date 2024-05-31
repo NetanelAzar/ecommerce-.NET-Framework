@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using DAL;
 
 namespace BLL
 {
@@ -14,11 +15,29 @@ namespace BLL
 			public string ClientLastname { get; set; }
 			public string Address { get; set; }
 			public string CityCode { get; set; }
-			public string PhoneNumber { get; set; }
+			public string ClientPhone { get; set; }
 			public string ClientMail { get; set; }
 			public string ClientPassword { get; set; }
-			public bool Status { get; set; }
-			public string DateTime { get; set; }
-		
+			public int Status { get; set; }
+		    public DateTime AddDate { get; set; }
+
+
+
+
+		public static List<Client> GetAll()
+		{
+			return ClientDAL.GetAll();
+		}
+
+		public static Client GetById(int Id)
+		{
+			return ClientDAL.GetById(Id);
+		}
+
+		public void Save()
+		{
+			ClientDAL.Save(this);
+		}
+
 	}
 }

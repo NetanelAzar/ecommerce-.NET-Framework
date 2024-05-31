@@ -30,6 +30,16 @@ namespace BLL
 		{
 			return ProductDAL.GetById(Id);
 		}
+
+
+		// קריאה לפונקציה Save ב-ProductDAL
+		public void Save()
+		{
+			ProductDAL.Save(this);// ושולחת את האובייקט הנוכחי (this)
+							     // כדי לשמור או לעדכן אותו בבסיס הנתונים
+		}
+
+
 	}
 
 }

@@ -28,7 +28,7 @@ namespace Ecommerce
 				ClientLastname = $"{TxtLastName.Text}",
 				Address = $"{TxtAdd.Text}",
 				CityCode = $"{DDLCity.SelectedValue}",
-				PhoneNumber = $"{TxtPhone.Text}",
+				ClientPhone = $"{TxtPhone.Text}",
 				ClientMail = $"{TxtMail.Text}",
 				ClientPassword = $"{TxtPass.Text}",
 

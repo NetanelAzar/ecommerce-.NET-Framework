@@ -29,7 +29,7 @@ namespace Ecommerce
 				{
 					///ניצור משתנה מסוג סשן
 					Session["Login"] = LstClient[i];
-					Response.Redirect("ProductList.aspx");
+					Response.Redirect("AdminManager/CatAddEdit.aspx");
 				}
 			}
 			LtlMsg.Text = "שם וסיסמא אינם תקינים";
