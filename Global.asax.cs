@@ -26,7 +26,12 @@ namespace Ecommerce
 			Application["Products"] = Product.GetAll();
 			Application["Categories"] = CategoryDAL.GetAll();
 			Application["Clients"] = ClientDAL.GetAll();
-			
+			Application["Cities"] = CityDAL.GetAll();
+
+
+
+
+
 
 		}
 		protected void Session_Start(object sender, EventArgs e)

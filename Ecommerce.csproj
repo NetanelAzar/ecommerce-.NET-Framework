@@ -201,6 +201,7 @@
     <Compile Include="App_Code\BLL\Product.cs" />
     <Compile Include="App_Code\BLL\GlobFunk.cs" />
     <Compile Include="App_Code\DAL\CategoryDAL.cs" />
+    <Compile Include="App_Code\DAL\CityDAL.cs" />
     <Compile Include="App_Code\DAL\ClientDAL.cs" />
     <Compile Include="App_Code\DAL\ProductDAL.cs" />
     <Compile Include="App_Code\DbContext.cs" />

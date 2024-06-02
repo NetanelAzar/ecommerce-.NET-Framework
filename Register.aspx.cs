@@ -12,11 +12,32 @@ namespace Ecommerce
 	{
 		protected void Page_Load(object sender, EventArgs e)
 		{
-		
+
+			if (!IsCallback)
+			{
+				List<City> LstCity = (List<City>)Application["Cities"];
+
+				for (int i = 0; i < LstCity.Count; i++)
+				{
+					DDLCity.Items.Add(new ListItem(LstCity[i].CityName, LstCity[i].CityCode + ""));
+				}
+
+				DDLCity.DataSource = LstCity;//הגדרת מקור הנתנונים
+				DDLCity.DataTextField = "CityName";//הגדרת השדה שישמש עבור התצוגה
+				DDLCity.DataValueField = "CityCode";//הגדרת השדה שישמש  עבוא המפתח של הפריט
+
+				DDLCity.DataBind();// הכנסת החיבור למקור הנתנונים לפעולה
+
+			}
+
 		}
 
 		protected void BtnReg_Click(object sender, EventArgs e)
 		{
+
+
+
+
 			List<Client> LstClient = (List<Client>)Application["Clients"];
 			if (LstClient == null) LstClient = new List<Client>(); // השתמש ברשימת הלקוחות הקיימת או צור רשימה חדשה אם היא לא קיימת
 
