@@ -18,6 +18,7 @@ namespace BLL
 			public string ClientPhone { get; set; }
 			public string ClientMail { get; set; }
 			public string ClientPassword { get; set; }
+		    public string Picname { get; set; }
 			public int Status { get; set; }
 		    public DateTime AddDate { get; set; }
 

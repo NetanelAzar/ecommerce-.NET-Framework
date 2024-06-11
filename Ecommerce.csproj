@@ -71,6 +71,8 @@
     <Content Include="AdminManager\buttons.html" />
     <Content Include="AdminManager\CatAddEdit.aspx" />
     <Content Include="AdminManager\CategoryList.aspx" />
+    <Content Include="AdminManager\ClientAddEdit.aspx" />
+    <Content Include="AdminManager\ClientList.aspx" />
     <Content Include="AdminManager\css\font-awesome\font-awesome.min.css" />
     <Content Include="AdminManager\css\ltr\bootstrap.min.css" />
     <Content Include="AdminManager\css\ltr\sb-admin-2.css" />
@@ -173,6 +175,20 @@
     </Compile>
     <Compile Include="AdminManager\CategoryList.aspx.designer.cs">
       <DependentUpon>CategoryList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AdminManager\ClientAddEdit.aspx.cs">
+      <DependentUpon>ClientAddEdit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminManager\ClientAddEdit.aspx.designer.cs">
+      <DependentUpon>ClientAddEdit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AdminManager\ClientList.aspx.cs">
+      <DependentUpon>ClientList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminManager\ClientList.aspx.designer.cs">
+      <DependentUpon>ClientList.aspx</DependentUpon>
     </Compile>
     <Compile Include="AdminManager\Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
@@ -278,6 +294,7 @@
     <Content Include="AdminManager\README.md" />
     <Content Include="AdminManager\BackAdmin.Master" />
     <Content Include="AdminManager\css\plugins\he.json" />
+    <Content Include="libman.json" />
     <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

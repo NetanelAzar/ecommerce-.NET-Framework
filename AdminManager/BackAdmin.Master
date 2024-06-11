@@ -311,10 +311,10 @@
                             <a href="#"><i class="fa fa-users"></i> משתמשים<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="ProductsList.aspx">רשימת משתמשים</a>
+                                    <a href="ClientList.aspx">רשימת משתמשים</a>
                                 </li>
                                 <li>
-                                    <a href="ProdAddEdit.aspx">הוספת משתמש חדש</a>
+                                    <a href="ClientAddEdit.aspx">הוספת משתמש חדש</a>
                                 </li>
 
                             </ul>

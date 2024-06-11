@@ -1,14 +1,13 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/AdminManager/BackAdmin.Master" ValidateRequest="false" AutoEventWireup="true" CodeBehind="CatAddEdit.aspx.cs" Inherits="Ecommerce.AdminManager.CatAddEdit" %>
-
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/AdminManager/BackAdmin.Master" ValidateRequest="false" AutoEventWireup="true" CodeBehind="ClientAddEdit.aspx.cs" Inherits="Ecommerce.AdminManager.ClientAddEdit" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    <style>
+        <style>
         .ck-editor__editable_inline {
             min-height: 400px; /* Adjust as needed */
         }
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainCnt" runat="server">
-
+    
     <script src="https://cdn.tiny.cloud/1/my30q5lf01td1btvxs662qsopn3pcmcm7m8o7nocvalbaf9n/tinymce/7/tinymce.min.js" referrerpolicy="origin"></script>
 
 <!-- Place the following <script> and <textarea> tags your HTML's <body> -->
@@ -38,7 +37,7 @@
 
     <div class="row">
         <div class="col-lg-12">
-            <h1 class="page-header">ניהול מוצרים</h1>
+            <h1 class="page-header">ניהול משתמשים</h1>
         </div>
         <!-- /.col-lg-12 -->
     </div>
@@ -47,32 +46,54 @@
         <div class="col-lg-12">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    הוספה / עריכת קטגוריה
+                    הוספה / עריכת משתמשים
                        
                 </div>
                 <div class="panel-body">
                     <div class="row">
                         <div class="col-lg-6">
-                            <asp:HiddenField ID="HidCid" runat="server" Value="-1" />
+                            <asp:HiddenField ID="HidClient" runat="server" Value="-1" />
                             <div class="form-group">
-                                <label>שם המוצר</label>
-                                <asp:TextBox ID="TxtCname" CssClass="form-control" runat="server" placeholder="נא הזן שם קטגוריה" />
+                                <label>שם פרטי</label>
+                                <asp:TextBox ID="TxtFirstName" CssClass="form-control" runat="server" placeholder="נא הזן שם קטגוריה" />
 
                             </div>
 
                             <div class="form-group">
-                                <label>קטגורית אב</label>
-                                <asp:TextBox ID="TxtParentCid" CssClass="form-control" runat="server" placeholder="נא הזן קטגורית אב" />
+                                <label>שם משפחה</label>
+                                <asp:TextBox ID="TxtLastName" CssClass="form-control" runat="server" placeholder="נא הזן קטגורית אב" />
 
                             </div>
 
 
                             <div class="form-group">
-                                <label>תיאור המוצר</label>
-                                <asp:TextBox ID="TxtCdesc" name="textbox" CssClass="form-control" runat="server" TextMode="MultiLine" Rows="10" Columns="40" placeholder="נא הזן תיאור הקטגוריה" />
+                                <label>כתובת</label>
+                               <asp:TextBox  ID="TxtAddress" CssClass="form-control" runat="server" placeholder="נא הזן קטגורית אב" />
 
                             </div>
 
+                            <div class="form-group">
+                                <label>פלאפון</label>
+                                <asp:TextBox  ID="TxtPhone" CssClass="form-control" runat="server" placeholder="נא הזן קטגורית אב" />
+                            </div>
+
+                            <div class="form-group">
+                                <label>מייל</label>
+                                 <asp:TextBox  ID="TxtMail" CssClass="form-control" runat="server" placeholder="נא הזן קטגורית אב" />
+
+                            </div>
+                            
+                            <div class="form-group">
+                                <label>קוד עיר</label>
+                                <asp:TextBox  ID="TetCityCode" CssClass="form-control" runat="server" placeholder="נא הזן קטגורית אב" />
+
+                            </div>
+
+                            <div class="form-group">
+                                <label>סיסמא</label>
+                                <asp:TextBox ID="TxtPassword" CssClass="form-control" runat="server"  placeholder="נא הזן קטגורית אב" />
+
+                            </div>
 
                             <div class="form-group">
                                 <label>שם תמונה</label>
@@ -104,7 +125,6 @@
         <!-- /.col-lg-12 -->
     </div>
     <!-- /.row -->
-
 
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="Footer" runat="server">

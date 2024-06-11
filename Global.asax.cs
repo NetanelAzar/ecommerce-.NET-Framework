@@ -24,9 +24,9 @@ namespace Ecommerce
 
 
 			Application["Products"] = Product.GetAll();
-			Application["Categories"] = CategoryDAL.GetAll();
-			Application["Clients"] = ClientDAL.GetAll();
-			Application["Cities"] = CityDAL.GetAll();
+			Application["Categories"] = Category.GetAll();
+			Application["Clients"] = Client.GetAll();
+			Application["Cities"] = City.GetAll();
 
 
 
